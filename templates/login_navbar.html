@@ -1,0 +1,9 @@
+<div class="navbar">
+    <a href="{% url 'maqola' %}">Home</a>
+    <a href="{% url 'world' %}">World News</a>
+    <a href="{% url 'local' %}">Local News</a>
+    <a href="{% url 'sport' %}">Sport News</a>
+    <a href="">Welcome {{ request.user }}</a>
+    <a href="{% url 'logout' %}">Log out</a>
+
+</div>

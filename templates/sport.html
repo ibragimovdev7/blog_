@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kun.uz</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="container">
+    {% include "navbar.html" %}
+    {% for s_new in s_news %}
+    <div class="maqola">
+        <h2>{{ s_new.title }}</h2>
+        <p>{{ s_new.description }}</p>
+        <h4>Author: {{ s_new.author }}</h4>
+        <p>Yaratilgan vaqti: {{ s_new.created_at }}</p>
+        <hr>
+    </div>
+    {% endfor %}
+
+</div>
+
+</body>
+</html>

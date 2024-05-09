@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kun.uz</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<div class="container">
+<!--    Bu yerdan login qilgan userlar uchun page yaratiladi-->
+    {% if request.user.is_authenticated %}
+    {% include "login_navbar.html" %}
+    {% for maqola in maqolalar %}
+    <div class="maqola">
+        <a href="{% url 'article_detail' maqola.id %}">{{ maqola.title }}</a>
+        <img src="{{ maqola.imageURL }}">
+        <p>Yaratilgan vaqti: {{ maqola.created_at }}</p>
+        <hr>
+    </div>
+    {% endfor %}
+
+    <!--    Bu yerdan login qilmagan userlar uchun page yaratiladi-->
+
+    {% else %}
+    {% include "navbar.html" %}
+    {% for maqola in maqolalar %}
+    <div class="maqola">
+        <h2>{{ maqola.title }}</h2>
+        <p>{{ maqola.description }}</p>
+        <h4>Author: {{ maqola.author }}</h4>
+        <p>Yaratilgan vaqti: {{ maqola.created_at }}</p>
+        <hr>
+    </div>
+    {% endfor %}
+
+    {% endif %}
+
+
+</div>
+
+</body>
+</html>
